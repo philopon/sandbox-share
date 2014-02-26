@@ -18,6 +18,7 @@ cabal-version:       >=1.10
 
 executable sandbox-share
   main-is:             Main.hs
+  ghc-options:         -Wall -O2
   -- other-modules:       
   -- other-extensions:    
   build-depends:       base >=4.6 && <4.7
