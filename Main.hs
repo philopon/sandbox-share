@@ -1,5 +1,4 @@
 import Control.Applicative
-import Control.Monad
 import Control.Exception
 
 import System.Process
@@ -10,8 +9,6 @@ import System.Environment
 
 import Data.List
 import Data.Maybe
-
-test = sandboxConfs "/Users/philopon/cabal-sandbox/yesod"
 
 sandboxConfsd :: FilePath -> IO (Maybe FilePath)
 sandboxConfsd dir = 
@@ -28,7 +25,7 @@ sandboxConfs dir = do
 
 register :: FilePath -> IO ()
 register conf = do
-  (_, _, Just stderr, ph) <- createProcess (proc "cabal" args) { std_err = CreatePipe }
+  (_, _, Just _, ph) <- createProcess (proc "cabal" args) { std_err = CreatePipe }
   exitCode <- waitForProcess ph
   case exitCode of
     ExitSuccess -> return ()
